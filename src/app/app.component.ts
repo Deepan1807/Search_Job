@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { JobListComponent } from './Components/job-list/job-list.component';
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,
+    JobListComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ng-job-search';
+
+  constructor(private router: Router) { }
+
+  setTab(name: string) {
+    this.router.navigate([`/${name}`]);
+  }
 }
